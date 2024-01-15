@@ -1,0 +1,51 @@
+export const dataSample = [
+  {
+    id: 1,
+    name: "AI SEO Master",
+    tags: ["seo", "marketing", "tutor"],
+    image: "",
+    slug: "ai-seo-master",
+  },
+  {
+    id: 2,
+    name: "Marketing Tutor",
+    tags: ["tag1", "tag2", "tag3"],
+    image: "",
+    slug: "marketing-tutor",
+  },
+  {
+    id: 3,
+    name: "Sales Man AI",
+    tags: ["tag1", "tag2", "tag3"],
+    image: "",
+    slug: "sales-man-ai",
+  },
+  {
+    id: 4,
+    name: "Pitch Practice Assistant",
+    tags: ["tag1", "tag2", "tag3"],
+    image: "",
+    slug: "pitch-practice-assistant",
+  },
+  {
+    id: 5,
+    name: "Nombre 5",
+    tags: ["tag1", "tag2", "tag3"],
+    image: "",
+    slug: "5",
+  },
+  {
+    id: 6,
+    name: "Nombre 6",
+    tags: ["tag1", "tag2", "tag3"],
+    image: "",
+    slug: "6",
+  },
+  {
+    id: 7,
+    name: "Nombre 7",
+    tags: ["tag1", "tag2", "tag3"],
+    image: "",
+    slug: "7",
+  },
+];
