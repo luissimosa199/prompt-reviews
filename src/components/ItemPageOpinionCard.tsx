@@ -1,9 +1,9 @@
 import React from "react";
 import ThumbsDownSvg from "./icons/ThumbsDownSvg";
 import ThumbsUpSvg from "./icons/ThumbsUpSvg";
-import OpinionCardRank from "./OpinionCardRank";
 import { formatOpinionDate } from "@/utils/formatOpinionDate";
 import Image from "next/image";
+import StarsRank from "./StarsRank";
 
 const ItemPageOpinionCard = ({
   name,
@@ -31,7 +31,7 @@ const ItemPageOpinionCard = ({
             <p className="font-semibold">{name || "Anónimo"}</p>
             <p className="text-sm">{formatOpinionDate(createdAt)}</p>
           </div>
-          <OpinionCardRank rank={rank} />
+          <StarsRank rank={rank} />
         </div>
         <div className="my-2">
           <p className="mb-2">{comment}</p>

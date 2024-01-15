@@ -6,18 +6,20 @@ import { Tabs } from "@/types";
 
 const ItemPageBody = ({
   visible,
-  phone,
+  prompt,
   tags,
   name,
   slug,
   itemId,
+  rank,
 }: {
   visible?: boolean;
-  phone: string;
+  prompt: string;
   tags: string[];
   name: string;
   slug: string;
   itemId: string;
+  rank: number;
 }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("informacion");
 
@@ -36,9 +38,10 @@ const ItemPageBody = ({
         slug={slug}
         visible={visible}
         currentTab={currentTab}
-        phone={phone}
+        prompt={prompt}
         tags={tags}
         name={name}
+        rank={rank}
       />
     </div>
   );

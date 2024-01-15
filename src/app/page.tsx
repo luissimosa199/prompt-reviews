@@ -21,8 +21,10 @@ export default function Home() {
         <ul className="flex flex-wrap gap-4 justify-around w-full mt-4 px-24">
           {dataSample.map((e) => (
             <ItemCard
-            slug={e.slug}
               key={e.id}
+              slug={e.slug}
+              rank={e.rank}
+              votes={e.votes}
               name={e.name}
               tags={e.tags}
               image={e.image}

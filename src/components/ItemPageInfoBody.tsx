@@ -1,20 +1,24 @@
 import React from "react";
 import StarOfLifeSvg from "./icons/StarOfLifeSvg";
 import HorizontalTagSvg from "./icons/HorizontalTagSvg";
-import StarSvg from "./icons/StarSvg";
+import StarRank from "./StarsRank";
+import MedalSvg from "./icons/MedalSvg";
+import CommentDotsSvg from "./icons/CommentDotsSvg";
 
 const ItemPageInfoBody = ({
   name,
   tags,
   showData,
   handleShowVisibility,
-  phone,
+  prompt,
+  rank,
 }: {
   name: string;
   tags: string[];
-  phone: string;
+  prompt: string;
   showData: boolean;
   handleShowVisibility: () => void;
+  rank: number;
 }) => {
   return (
     <div>
@@ -38,11 +42,19 @@ const ItemPageInfoBody = ({
           <span className="text-sm text-gray-500 italic">Categorías</span>
         )}
       </div>
+      <div className="flex gap-2 mb-2 text-lg font-semibold">
+        <MedalSvg />
+        {rank ? (
+          <StarRank rank={rank} />
+        ) : (
+          <span className="text-sm text-gray-500 italic">Rank</span>
+        )}
+      </div>
       <div className="flex gap-2 mb-2">
-        <StarSvg />
+        <CommentDotsSvg />
         {showData ? (
-          phone ? (
-            <p>{phone}</p>
+          prompt ? (
+            <p id="prompt">{prompt}</p>
           ) : (
             <span className="text-sm text-gray-500 italic">Link?</span>
           )
@@ -51,7 +63,7 @@ const ItemPageInfoBody = ({
             className="text-blue-500 font-semibold"
             onClick={handleShowVisibility}
           >
-            Calificación
+            Ver Prompt
           </button>
         )}
       </div>

@@ -1,32 +1,32 @@
 import ItemPageBody from "@/components/ItemPageBody";
 import ItemPageHeader from "@/components/ItemPageHeader";
 import { dataSample } from "@/data/prompts";
-import React from "react";
 
-const Prompt = ({ params }: { params: { slug: string } }) => {
+const PromptPage = ({ params }: { params: { slug: string } }) => {
   const prompt = dataSample.find((e) => e.slug === params.slug);
 
   if (!prompt) {
-    return <p>Prompt no encontrado</p>;
+    return <p>Error</p>;
   }
 
   return (
     <main className="bg-zinc-50">
       <ItemPageHeader
-        image={prompt?.image || ""}
-        name={prompt?.name || ""}
-        type={prompt?.tags[0] || ""}
+        image={prompt.image}
+        name={prompt.name}
+        type={prompt.tags[0]}
       />
       <ItemPageBody
         itemId={`${prompt.id}`}
+        visible={true}
         slug={prompt.slug}
         prompt={prompt.prompt}
-        tags={prompt.tags}
         name={prompt.name}
+        tags={prompt.tags}
         rank={prompt.rank}
       />
     </main>
   );
 };
 
-export default Prompt;
+export default PromptPage;

@@ -7,29 +7,32 @@ import ItemPageOpinionsInput from "./ItemPageOpinionsInput";
 const CurrentTabContent = ({
   currentTab,
   visible,
-  phone,
+  prompt,
   tags,
   name,
   slug,
   itemId,
+  rank,
 }: {
   currentTab: string;
   visible?: boolean;
-  phone: string;
+  prompt: string;
   tags: string[];
   name: string;
   slug: string;
   itemId: string;
+  rank: number;
 }) => {
   return (
     <div>
       <div className={`${currentTab !== "informacion" ? "hidden" : "block"}`}>
         <ItemPageInfoTab
           visible={visible}
-          phone={phone}
+          prompt={prompt}
           tags={tags}
           name={name}
           slug={slug}
+          rank={rank}
         />
         {/* <div className="mx-4 mb-4 overflow-hidden hidden">
           <Ad />

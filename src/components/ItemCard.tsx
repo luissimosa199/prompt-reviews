@@ -1,19 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import StarSvg from "./icons/StarSvg";
-import FilledStarSvg from "./icons/FilledStarSvg";
+import StarRank from "./StarsRank";
 
 const ItemCard = ({
   slug,
   name,
   tags,
   image,
+  rank,
+  votes,
 }: {
   slug: string;
   name: string;
   tags: string[];
   image: string;
+  rank: number;
+  votes: number;
 }) => {
   return (
     <div className="w-64 mb-8">
@@ -39,11 +42,8 @@ const ItemCard = ({
             })}
           </p>
           <div className="flex mb-2 gap-1 justify-center">
-            {[...Array(4)].map((_, idx) => {
-              return <FilledStarSvg key={`star_${idx}`} />;
-            })}
-            <StarSvg />
-            <span className="text-xs">(10)</span>
+            <StarRank rank={rank} />
+            <span className="text-xs">({votes})</span>
           </div>
         </div>
       </div>

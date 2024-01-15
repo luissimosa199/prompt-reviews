@@ -5,22 +5,24 @@ import ItemPageInfoBody from "./ItemPageInfoBody";
 
 const ItemPageInfoTab = ({
   visible,
-  phone,
+  prompt,
   tags,
   name,
   slug,
+  rank,
 }: {
   visible?: boolean;
-  phone: string;
+  prompt: string;
   tags: string[];
   name: string;
   slug: string;
+  rank: number;
 }) => {
   const [showData, setShowData] = useState<boolean>(!!visible);
   const router = useRouter();
 
   const handleShowVisibility = () => {
-    router.replace(`/telefono/medicos/${slug}#phone`);
+    router.replace(`/detail/prompt/${slug}#prompt`);
     setShowData(true);
   };
 
@@ -36,7 +38,8 @@ const ItemPageInfoTab = ({
           tags={tags}
           showData={showData}
           handleShowVisibility={handleShowVisibility}
-          phone={phone}
+          prompt={prompt}
+          rank={rank}
         />
       </div>
     </section>

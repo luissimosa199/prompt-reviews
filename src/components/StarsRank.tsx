@@ -2,7 +2,7 @@ import React from "react";
 import FilledStarSvg from "./icons/FilledStarSvg";
 import StarSvg from "./icons/StarSvg";
 
-const OpinionCardRank = ({ rank }: { rank: number }) => {
+const StarRank = ({ rank }: { rank: number }) => {
   return (
     <div className="flex mb-2 gap-1 justify-center">
       {[...Array(5)].map((_, idx) => {
@@ -16,4 +16,4 @@ const OpinionCardRank = ({ rank }: { rank: number }) => {
   );
 };
 
-export default OpinionCardRank;
+export default StarRank;
