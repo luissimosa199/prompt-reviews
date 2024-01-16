@@ -2,9 +2,12 @@
 import React, { useState } from "react";
 import BarsSvg from "./icons/BarsSvg";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const MobileNav = () => {
   const [menuIsOpen, toggleMenu] = useState<boolean>(false);
+
+  const { status } = useSession();
 
   return (
     <div className="md:hidden">
@@ -25,10 +28,12 @@ const MobileNav = () => {
               <Link href="/blog">Blog</Link>
             </li>
             <li className="border-b w-1/2 text-center py-2">
-              <Link href="/">Agregar</Link>
+              <Link href="/agregar">Agregar</Link>
             </li>
             <li className="border-b w-1/2 text-center py-2">
-              <Link href={"/login"}>Ingresar</Link>
+              <Link href={status === "authenticated" ? "/perfil" : "/login"}>
+                {status === "authenticated" ? "Perfil" : "Ingresar"}
+              </Link>
             </li>
           </ul>
         </div>
