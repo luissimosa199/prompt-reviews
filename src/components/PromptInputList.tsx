@@ -11,6 +11,7 @@ import {
   useRef,
   useState,
 } from "react";
+import ChevronRightSvg from "./icons/ChevronRightSvg";
 
 const tailwindNamedColors = [
   "black",
@@ -43,7 +44,6 @@ type TailwindColor = (typeof tailwindNamedColors)[number];
 
 type PromptInputListProps = {
   placeholder?: string;
-  showState?: boolean;
   primaryColor?: TailwindColor;
   inputList: string[];
   setInputList: Dispatch<SetStateAction<string[]>>;
@@ -53,7 +53,6 @@ const PromptInputList: FunctionComponent<PromptInputListProps> = ({
   inputList,
   setInputList,
   placeholder,
-  showState,
   primaryColor = "blue",
 }) => {
   const [inputText, setInputText] = useState("");
@@ -140,9 +139,9 @@ const PromptInputList: FunctionComponent<PromptInputListProps> = ({
               addInput();
               if (inputRef.current) inputRef.current.focus();
             }}
-            className={`absolute right-2 top-2 text-lg font-bold rounded-full shadow w-6 h-6 leading-4 text-${primaryColor}-500 border border-${primaryColor}-500 bg-white hover:bg-${primaryColor}-200 hover:text-${primaryColor}-700`}
+            className={`absolute flex justify-center items-center right-2 top-2 text-lg font-bold rounded-full shadow w-6 h-6 leading-4 text-${primaryColor}-500 border border-${primaryColor}-500 bg-white hover:bg-${primaryColor}-200 hover:text-${primaryColor}-700`}
           >
-            {/* <FontAwesomeIcon icon={faGreaterThan} /> */}
+            <ChevronRightSvg />
           </button>
         </div>
         {suggestions.length > 0 && inputText.length > 0 && (
@@ -165,33 +164,6 @@ const PromptInputList: FunctionComponent<PromptInputListProps> = ({
           </ul>
         )}
       </div>
-      {showState && (
-        <ul className="flex flex-wrap gap-2 md:justify-between">
-          {(inputList as string[]).map((item, idx) => {
-            return (
-              <li
-                key={idx}
-                className="bg-white border rounded-md p-2 mb-2 w-full md:w-[30%] relative"
-              >
-                <div className="flex justify-between items-start">
-                  <span className="text-blue-600 font-medium">{item}</span>
-                  <button
-                    className="text-xs bg-red-500 font-bold w-5 h-5 rounded-full text-white absolute top-2 right-2"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setInputList((prevList: string[]) =>
-                        prevList.filter((input) => input !== item)
-                      );
-                    }}
-                  >
-                    {/* <FontAwesomeIcon icon={faX} /> */}
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
     </div>
   );
 };

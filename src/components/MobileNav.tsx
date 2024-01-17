@@ -1,11 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BarsSvg from "./icons/BarsSvg";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 const MobileNav = () => {
   const [menuIsOpen, toggleMenu] = useState<boolean>(false);
+  const pathName = usePathname();
+
+  useEffect(() => {
+    toggleMenu(false);
+  }, [pathName]);
 
   const { status } = useSession();
 
@@ -22,7 +28,7 @@ const MobileNav = () => {
         <div className="absolute w-full left-0 top-16 bg-white shadow-md z-50">
           <ul className="flex flex-col items-center">
             <li className="border-b w-1/2 text-center py-2">
-              <Link href="/medicos">Prompts</Link>
+              <Link href="/">Prompts</Link>
             </li>
             <li className="border-b w-1/2 text-center py-2">
               <Link href="/blog">Blog</Link>

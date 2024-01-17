@@ -193,10 +193,6 @@ const ItemPageOpinionsInput = ({
                   htmlFor="file"
                   className="flex gap-2 items-center w-fit h-8 cursor-pointer rounded-md p-2 bg-gray-200 hover:bg-slate-400 transition-all "
                 >
-                  {/* <FontAwesomeIcon
-                    icon={faPaperclip}
-                    size="lg"
-                  /> */}
                   Subir imagen o video
                 </label>
 

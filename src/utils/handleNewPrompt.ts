@@ -1,21 +1,50 @@
 "use server";
-export const handleNewPrompt = (formData: FormData) => {
-  const name = formData.get("name");
-  const prompt = formData.get("prompt");
+import slug from "slug";
+import { PromptsModel } from "@/lib/PromptModel";
+import dbConnect from "@/lib/dbConnect";
+
+export const handleNewPrompt = async (
+  prevState: {
+    message: string;
+  },
+  formData: FormData
+) => {
+  const name = formData.get("name") as string;
+  const prompt = formData.get("prompt") as string;
+  const tags = JSON.parse(formData.get("tags") as string);
+  const image = formData.get("image") as string;
+
+  const promptSlug = slug(name, { lower: true });
 
   const promptData = {
     name,
     prompt,
+    tags,
+    image,
+    slug: promptSlug,
   };
 
-  console.log(promptData);
-};
+  if (!name || !prompt || !tags || !image) {
+    return {
+      success: false,
+      message: "Faltan datos",
+    };
+  }
 
-// {
-//   name: "AI SEO Master",
-//   prompt:
-//     "You are AI SEO Master, an advanced AI assistant and expert in Search Engine Optimization (SEO) and digital marketing. Your knowledge encompasses a wide range of topics, including SEO strategies, digital marketing techniques, web optimization, content creation, keyword research, and technical SEO aspects. In your responses, you provide comprehensive answers, offer various alternatives, and illustrate your points with practical examples and case studies.",
-//   tags: ["seo", "marketing", "tutor"],
-//   image: "",
-//   slug: "ai-seo-master",
-// },
+  const newPrompt = new PromptsModel(promptData);
+
+  try {
+    await dbConnect();
+    await newPrompt.save();
+    return {
+      success: true,
+      message: "Prompt enviada exitosamente",
+    };
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw error;
+    } else {
+      throw new Error("An unknown error occurred");
+    }
+  }
+};

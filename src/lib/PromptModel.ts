@@ -13,7 +13,7 @@ export class Prompts {
   _id: string;
 
   @prop({ required: true })
-  email: string;
+  name: string;
 
   @prop({ required: true })
   prompt: string;
