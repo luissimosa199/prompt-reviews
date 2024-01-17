@@ -20,13 +20,6 @@ export interface CustomNextApiResponse<T = any> extends NextApiResponse<T> {
   // Add any custom response properties here
 }
 
-// const NextAuthHandler = (
-//   req: CustomNextApiRequest,
-//   res: CustomNextApiResponse
-// ) => NextAuth(req, res, authOptions);
-
-// export { NextAuthHandler as GET, NextAuthHandler as POST };
-
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import FormButton from "@/components/FormButton";
 import { handleNewPrompt } from "@/utils/handleNewPrompt";
+import PromptInputList from "@/components/PromptInputList";
 
 const Agregar = () => {
+  const [inputList, setInputList] = useState<string[]>([]);
   const session = useSession();
 
   if (!session) {
@@ -47,8 +49,15 @@ const Agregar = () => {
           ></textarea>
         </div>
 
+        <div className="mb-4">
+          <PromptInputList
+            inputList={inputList}
+            setInputList={setInputList}
+          />
+          <p> {inputList.join(", ")} </p>
+        </div>
+
         <p>image</p>
-        <p>tags</p>
 
         <FormButton />
       </form>

@@ -7,7 +7,6 @@ import { useState } from "react";
 export default function Register() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isDoctor, setIsDoctor] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -64,24 +63,6 @@ export default function Register() {
             required
           />
         </div>
-
-        {isDoctor && (
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="type"
-            >
-              Especialidad
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="type"
-              type="text"
-              id="type"
-              required={isDoctor}
-            />
-          </div>
-        )}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"

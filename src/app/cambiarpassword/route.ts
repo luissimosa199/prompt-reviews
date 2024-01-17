@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     await VerifyCodeModel.deleteMany({ email: email });
 
     return Response.json(
-      { error: "Contraseña actualizada correctamente." },
+      { message: "Contraseña actualizada correctamente." },
       { status: 200 }
     );
   } catch (error) {
