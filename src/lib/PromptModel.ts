@@ -16,6 +16,9 @@ export class Prompts {
   name: string;
 
   @prop({ required: true })
+  user: string;
+
+  @prop({ required: true })
   prompt: string;
 
   @prop()

@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import StarRank from "./StarsRank";
+import ItemCardStats from "./ItemCardStats";
 
 const ItemCard = ({
+  _id,
   slug,
   name,
   tags,
   image,
-  rank,
-  votes,
 }: {
+  _id: string;
   slug: string;
   name: string;
   tags: string[];
@@ -25,14 +25,17 @@ const ItemCard = ({
           href={`/prompt/${slug}`}
           className="w-full h-full"
         >
-          {/* <Image
-            src={""}
-            width={128}
-            height={128}
-            alt={`image`}
-            className="w-16 h-16 object-cover rounded-full mb-4 md:mb-0"
-          /> */}
-          <div className="w-full h-32 bg-gray-300"></div>
+          {image ? (
+            <Image
+              src={image}
+              width={128}
+              height={128}
+              alt={`image`}
+              className="w-32 h-32 object-cover rounded-full mb-4 md:mb-0 mx-auto"
+            />
+          ) : (
+            <div className="w-full h-32 bg-gray-300"></div>
+          )}
         </Link>
         <div className="text-center flex flex-col justify-center items-center gap-2">
           <p className="font-bold">{name}</p>
@@ -41,10 +44,7 @@ const ItemCard = ({
               return `${e}${idx === tags.length - 1 ? "" : ", "}`;
             })}
           </p>
-          <div className="flex mb-2 gap-1 justify-center">
-            <StarRank rank={rank} />
-            <span className="text-xs">({votes})</span>
-          </div>
+          <ItemCardStats _id={_id} />
         </div>
       </div>
     </div>

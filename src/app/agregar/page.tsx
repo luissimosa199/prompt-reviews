@@ -21,6 +21,7 @@ const Agregar = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const initialState = {
+    success: false,
     message: "",
   };
 
@@ -168,7 +169,11 @@ const Agregar = () => {
         </div>
         <FormButton submitBtnDisabled={submitBtnDisabled} />
         {state.message && (
-          <p className={`font-semibold text-xs italic text-center `}>
+          <p
+            className={`font-semibold text-xs italic text-center ${
+              state.success ? "text-green-600" : "text-red-600"
+            } `}
+          >
             {state.message}
           </p>
         )}

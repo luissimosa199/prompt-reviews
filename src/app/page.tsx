@@ -1,8 +1,10 @@
 import ItemCard from "@/components/ItemCard";
-import { dataSample } from "@/data/prompts";
+import { getPrompts } from "@/utils/getPrompts";
 import React from "react";
 
-export default function Home() {
+export default async function Home() {
+  const data = await getPrompts();
+
   return (
     <main className="">
       <div className={`bg-zinc-50 md:p-8`}>
@@ -19,12 +21,13 @@ export default function Home() {
         </div>
 
         <ul className="flex flex-wrap gap-4 justify-around w-full mt-4 px-24">
-          {dataSample.map((e) => (
+          {data.map((e) => (
             <ItemCard
-              key={e.id}
+              key={e._id as string}
+              _id={e._id as string}
               slug={e.slug}
-              rank={e.rank}
-              votes={e.votes}
+              rank={5}
+              votes={3}
               name={e.name}
               tags={e.tags}
               image={e.image}
