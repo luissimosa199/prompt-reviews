@@ -28,7 +28,7 @@ const ItemPageOpinionsInput = ({
   const sendOpinion = async (data: {}) => {
     const dataWithFiles = { ...data, files, audio: uploadedAudio };
 
-    const response = await fetch("/api/medicos/opinions", {
+    const response = await fetch("/api/opinions", {
       method: "POST",
       body: JSON.stringify(dataWithFiles),
     });
@@ -71,6 +71,8 @@ const ItemPageOpinionsInput = ({
       email: formData.email,
       subscribe: !!formData.subscribe,
       comment: formData.comment,
+      promptName: name,
+      promptId: itemId,
     };
 
     sendOpinion(data);
@@ -184,7 +186,7 @@ const ItemPageOpinionsInput = ({
                 defaultChecked={true}
               />
               <label htmlFor="subscribe text-lg">
-                Deseo recibir información sobre mi bienestar y promociones
+                Deseo recibir información
               </label>
             </div>
             <div>

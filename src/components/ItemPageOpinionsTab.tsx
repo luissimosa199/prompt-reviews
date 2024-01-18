@@ -1,21 +1,19 @@
 import React from "react";
 import ItemPageOpinionCard from "./ItemPageOpinionCard";
 // import Ad from "./Ad";
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Opinion } from "@/types";
 
 const ItemPageOpinionsTab = ({ itemId }: { itemId: string }) => {
   const fetchOpinions = async () => {
-    const response = await fetch(`/api/medicos/opinions?itemId=${itemId}`);
+    const response = await fetch(`/api/opinions?promptId=${itemId}`);
     return response.json();
   };
 
-  //   const { data, isLoading } = useQuery(["opinions", itemId], {
-  //     queryFn: fetchOpinions,
-  //   });
-
-  const data: Opinion[] = [];
-  const isLoading = false;
+  const { data, isLoading } = useQuery({
+    queryKey: ["opinions", itemId],
+    queryFn: fetchOpinions,
+  });
 
   if (isLoading) {
     return <p>Cargando...</p>;
@@ -26,8 +24,8 @@ const ItemPageOpinionsTab = ({ itemId }: { itemId: string }) => {
       {/* <div className="w-full mt-4 overflow-hidden">
         <Ad />
       </div> */}
-      {data.length > 0 ? (
-        data.map((e: Opinion) => {
+      {data.opinions.length > 0 ? (
+        data.opinions.map((e: Opinion) => {
           return (
             <ItemPageOpinionCard
               key={`comment_${e._id}`}

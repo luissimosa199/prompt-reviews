@@ -1,10 +1,11 @@
 import ItemPageBody from "@/components/ItemPageBody";
 import ItemPageHeader from "@/components/ItemPageHeader";
-import { dataSample } from "@/data/prompts";
+import { Prompts } from "@/lib/PromptModel";
+import { getPrompt } from "@/utils/getPrompt";
 import React from "react";
 
-const Prompt = ({ params }: { params: { slug: string } }) => {
-  const prompt = dataSample.find((e) => e.slug === params.slug);
+const Prompt = async ({ params }: { params: { slug: string } }) => {
+  const prompt = (await getPrompt(params.slug)) as Prompts;
 
   if (!prompt) {
     return <p>Prompt no encontrado</p>;
@@ -18,12 +19,12 @@ const Prompt = ({ params }: { params: { slug: string } }) => {
         type={prompt?.tags[0] || ""}
       />
       <ItemPageBody
-        itemId={`${prompt.id}`}
+        itemId={`${prompt._id}`}
         slug={prompt.slug}
         prompt={prompt.prompt}
         tags={prompt.tags}
         name={prompt.name}
-        rank={prompt.rank}
+        rank={4}
       />
     </main>
   );

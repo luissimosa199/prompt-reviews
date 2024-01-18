@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from "uuid";
     timestamps: true,
     collection: "prompts",
   },
+  options: {
+    allowMixed: 0,
+  },
 })
 export class Prompts {
   @prop({ default: () => uuidv4() })

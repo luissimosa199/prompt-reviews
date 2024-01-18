@@ -33,7 +33,7 @@ export interface Opinion {
   _id: string;
   name: string;
   email?: string;
-  doctorName?: string;
+  promptName?: string;
   createdAt: string;
   rank: number;
   comment: string;
