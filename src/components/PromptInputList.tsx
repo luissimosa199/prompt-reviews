@@ -1,8 +1,5 @@
 "use client";
 import { fetchCategories } from "@/utils/getCategories";
-// import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-// import { faGreaterThan, faLink, faX } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Dispatch,
   FunctionComponent,
