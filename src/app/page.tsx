@@ -1,9 +1,11 @@
 import ItemCard from "@/components/ItemCard";
+import UserAgentTracker from "@/components/UserAgentTracker";
 import { getPrompts } from "@/utils/getPrompts";
-import React from "react";
+import { cookies } from "next/headers";
 
 export default async function Home() {
   const data = await getPrompts();
+  const agentCookie = cookies().get("user_agent_id")?.value;
 
   return (
     <main className="">
@@ -35,6 +37,7 @@ export default async function Home() {
           ))}
         </ul>
       </div>
+      <UserAgentTracker agentCookie={agentCookie} />
     </main>
   );
 }

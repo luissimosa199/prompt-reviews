@@ -25,7 +25,7 @@ export async function getPrompts() {
       );
       return {
         ...prompt,
-        averageRank: opinion ? opinion.averageRank : null,
+        averageRank: opinion ? Math.round(opinion.averageRank) : null,
         opinionsCount: opinion ? opinion.count : 0,
       };
     });

@@ -1,3 +1,4 @@
+"use client"
 import { useQuery } from "@tanstack/react-query";
 import GlobalInfoTable from "@/components/AdminPanelGlobalInfoTable";
 import TenUsersInfoTable from "@/components/AdminPanelTenUsersInfoTable";

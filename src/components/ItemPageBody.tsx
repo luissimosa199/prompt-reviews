@@ -12,6 +12,7 @@ const ItemPageBody = ({
   slug,
   itemId,
   rank,
+  votes,
 }: {
   visible?: boolean;
   prompt: string;
@@ -20,6 +21,7 @@ const ItemPageBody = ({
   slug: string;
   itemId: string;
   rank: number;
+  votes: number;
 }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("informacion");
 
@@ -42,6 +44,7 @@ const ItemPageBody = ({
         tags={tags}
         name={name}
         rank={rank}
+        votes={votes}
       />
     </div>
   );

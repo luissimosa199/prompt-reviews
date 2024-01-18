@@ -12,6 +12,7 @@ const ItemPageInfoBody = ({
   handleShowVisibility,
   prompt,
   rank,
+  votes,
 }: {
   name: string;
   tags: string[];
@@ -19,6 +20,7 @@ const ItemPageInfoBody = ({
   showData: boolean;
   handleShowVisibility: () => void;
   rank: number;
+  votes: number;
 }) => {
   return (
     <div>
@@ -49,6 +51,7 @@ const ItemPageInfoBody = ({
         ) : (
           <span className="text-sm text-gray-500 italic">Rank</span>
         )}
+        {votes && <p className="text-sm text-gray-500">({votes})</p>}
       </div>
       <div className="flex gap-2 mb-2">
         <CommentDotsSvg />

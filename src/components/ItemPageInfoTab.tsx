@@ -10,6 +10,7 @@ const ItemPageInfoTab = ({
   name,
   slug,
   rank,
+  votes,
 }: {
   visible?: boolean;
   prompt: string;
@@ -17,6 +18,7 @@ const ItemPageInfoTab = ({
   name: string;
   slug: string;
   rank: number;
+  votes: number;
 }) => {
   const [showData, setShowData] = useState<boolean>(!!visible);
   const router = useRouter();
@@ -40,6 +42,7 @@ const ItemPageInfoTab = ({
           handleShowVisibility={handleShowVisibility}
           prompt={prompt}
           rank={rank}
+          votes={votes}
         />
       </div>
     </section>

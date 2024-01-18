@@ -13,6 +13,7 @@ const CurrentTabContent = ({
   slug,
   itemId,
   rank,
+  votes,
 }: {
   currentTab: string;
   visible?: boolean;
@@ -22,6 +23,7 @@ const CurrentTabContent = ({
   slug: string;
   itemId: string;
   rank: number;
+  votes: number;
 }) => {
   return (
     <div>
@@ -33,6 +35,7 @@ const CurrentTabContent = ({
           name={name}
           slug={slug}
           rank={rank}
+          votes={votes}
         />
         {/* <div className="mx-4 mb-4 overflow-hidden hidden">
           <Ad />
