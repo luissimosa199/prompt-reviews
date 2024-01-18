@@ -1,23 +1,22 @@
 import React from "react";
 import StarRank from "./StarsRank";
-import { getPromptStats } from "@/utils/getPromptStats";
 
-const ItemCardStats = async ({ _id }: { _id: string }) => {
-  const { success, rank, votes } = await getPromptStats(_id);
-
+const ItemCardStats = async ({
+  rank,
+  votes,
+}: {
+  rank: number;
+  votes: number;
+}) => {
   return (
     <div className="flex mb-2 gap-1 justify-center">
-      {success ? (
-        votes ? (
-          <>
-            <StarRank rank={rank} />
-            <span className="text-xs">{votes}</span>
-          </>
-        ) : (
-          <p>Sin opiniones</p>
-        )
+      {votes ? (
+        <>
+          <StarRank rank={rank} />
+          <span className="text-xs">{votes}</span>
+        </>
       ) : (
-        <p>Error</p>
+        <p>Sin opiniones</p>
       )}
     </div>
   );

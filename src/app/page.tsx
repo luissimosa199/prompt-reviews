@@ -26,8 +26,8 @@ export default async function Home() {
               key={e._id as string}
               _id={e._id as string}
               slug={e.slug}
-              rank={5}
-              votes={3}
+              rank={e.averageRank || 0}
+              votes={e.opinionsCount}
               name={e.name}
               tags={e.tags}
               image={e.image}

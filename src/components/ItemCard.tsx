@@ -9,6 +9,8 @@ const ItemCard = ({
   name,
   tags,
   image,
+  rank,
+  votes,
 }: {
   _id: string;
   slug: string;
@@ -44,7 +46,10 @@ const ItemCard = ({
               return `${e}${idx === tags.length - 1 ? "" : ", "}`;
             })}
           </p>
-          <ItemCardStats _id={_id} />
+          <ItemCardStats
+            rank={rank}
+            votes={votes}
+          />
         </div>
       </div>
     </div>
