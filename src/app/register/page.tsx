@@ -34,6 +34,8 @@ export default function Register() {
 
     const data = await response.json();
 
+    console.log({ response, data });
+
     if (response.ok) {
       router.push("/login");
     } else {

@@ -58,6 +58,9 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error(error);
-    return Response.json({ error: `Error: ${error}` }, { status: 500 });
+    return Response.json(
+      { error: `Error: ${JSON.stringify(error)}` },
+      { status: 500 }
+    );
   }
 }
